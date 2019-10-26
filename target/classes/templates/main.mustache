@@ -1,0 +1,31 @@
+<html lang="en">
+
+<body>
+<h1 class="main_text" align="center">Soldiers, {{some}}</h1>
+<br/>
+<h2 class="second_text">Список пользователей</h2>
+<br/>
+<div>
+    <form method="post">
+        <label class="user-name-label">
+            <input type="text" class="user-name" placeholder="Введите имя">
+        </label>
+        <label class="user-age-label">
+            <input type="text" class="user-age" placeholder="Введите возраст"/>
+        </label>
+        <label class="user-country-label">
+            <input type="text" class="user-country" placeholder="Введите страну"/>
+        </label>
+        <button type="submit" class="user-submit">Добавить</button>
+    </form>
+    {{#users}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{name}}</span>
+            <span>{{age}}</span>
+            <span>{{country}}</span>
+        </div>
+    {{/users}}
+</div>
+</body>
+</html>

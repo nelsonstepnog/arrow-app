@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:latest
+    container_name: arrow-app-postgres
+    hostname: db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: arrow_app_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+
+  pg-admin:
+    image: dpage/pgadmin4:latest
+    container_name: arrow-app-pgadmin
+    hostname: pgadmin-arrow-app.local
+    depends_on:
+      - db
+    ports:
+      - "5555:80"
+    environment:
+      GUNICORN_THREADS: 1
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 12345
+    volumes:
+      - ./develop/postgres_data/pgadmin4.db:/var/lib/pgadmin/pgadmin4.db:rw
+    restart: always
