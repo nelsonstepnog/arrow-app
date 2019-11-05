@@ -1,5 +1,6 @@
 version: '3.3'
 services:
+
   db:
     image: postgres:latest
     container_name: arrow-app-postgres
@@ -16,7 +17,6 @@ services:
   pg-admin:
     image: dpage/pgadmin4:latest
     container_name: arrow-app-pgadmin
-    hostname: pgadmin-arrow-app.local
     depends_on:
       - db
     ports:
