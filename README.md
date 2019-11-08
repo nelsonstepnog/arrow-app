@@ -17,13 +17,17 @@
 ### `$ docker-compose up`
 ### `$ docker-compose start`
 
+Localhost бэка:
+-----------------------------------------------------------------------
+[http://localhost:8080/users]()
+
 PGAdmin:
 -----------------------------------------------------------------------
 [http://localhost:5555/]()
 - Login: admin@admin.com
 - Password: 12345
 
-Фронтенд можно взять здесь:
+Фронтенд на React & Redux можно взять здесь:
 -----------------------------------------------------------------------
 [https://github.com/nelsonstepnog/arrow-app-front.git]()
 
@@ -40,14 +44,15 @@ fetch('/users',
 ).then(result => result.json().then(console.log))
 
 -----------------------------------------------------------------------
-2.) Получить пользователя:
+2.) Получить пользователя / список пользователей:
 
-fetch('/users/1').then(response => response.json().then(console.log))
+fetch('/users/60').then(response => response.json().then(console.log))
+fetch('/users/').then(response => response.json().then(console.log))
 
 -----------------------------------------------------------------------
 3.) Обновить одного пользователя:
 
-fetch('/users/1', 
+fetch('/users/60', 
   { 
     method: 'PUT', 
     headers: { 'Content-Type': 'application/json' }, 
@@ -58,7 +63,7 @@ fetch('/users/1',
 -----------------------------------------------------------------------
 4.) Удалить одного пользователя:
 
-fetch('/users/1', { method: 'DELETE' }).then(result => console.log(result))
+fetch('/users/60', { method: 'DELETE' }).then(result => console.log(result))
 
 -----------------------------------------------------------------------
 
@@ -75,13 +80,13 @@ curl -X GET "http://localhost:8080/users" -H 'Content-Type: application/json'
 
 3.) VIEW one(GET)
 
-curl -X GET "http://localhost:8080/users/1" -H 'Content-Type: application/json'
+curl -X GET "http://localhost:8080/users/60" -H 'Content-Type: application/json'
 
 4.) UPDATE
 
-curl -X PUT "http://localhost:8080/users/1" -H 'Content-Type: application/json' -d '{ "name": "1 user update", "age": "22", "country": "Russia" }'
+curl -X PUT "http://localhost:8080/users/60" -H 'Content-Type: application/json' -d '{ "name": "1 user update", "age": "22", "country": "Russia" }'
 
 5.) DELETE
 
-curl -X DELETE "http://localhost:8080/users/1" -H 'Content-Type: application/json'
+curl -X DELETE "http://localhost:8080/users/60" -H 'Content-Type: application/json'
 
