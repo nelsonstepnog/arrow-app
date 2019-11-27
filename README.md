@@ -35,7 +35,7 @@ PGAdmin:
 -----------------------------------------------------------------------
 1.) Создать одного пользователя:
 
-fetch('/users', 
+fetch("http://localhost:8080/users/", 
   { 
     method: 'POST', 
     headers: { 'Content-Type': 'application/json' },
@@ -46,13 +46,14 @@ fetch('/users',
 -----------------------------------------------------------------------
 2.) Получить пользователя / список пользователей:
 
-fetch('/users/60').then(response => response.json().then(console.log))
-fetch('/users/').then(response => response.json().then(console.log))
+fetch("http://localhost:8080/users/1", { method: 'GET' }).then(response => response.json().then(console.log))
+
+fetch("http://localhost:8080/users/", { method: 'GET' }).then(response => response.json().then(console.log))
 
 -----------------------------------------------------------------------
 3.) Обновить одного пользователя:
 
-fetch('/users/60', 
+fetch("http://localhost:8080/users/1",
   { 
     method: 'PUT', 
     headers: { 'Content-Type': 'application/json' }, 
@@ -63,30 +64,28 @@ fetch('/users/60',
 -----------------------------------------------------------------------
 4.) Удалить одного пользователя:
 
-fetch('/users/60', { method: 'DELETE' }).then(result => console.log(result))
+fetch("http://localhost:8080/users/1", { method: 'DELETE' }).then(result => console.log(result))
 
 -----------------------------------------------------------------------
 
 
 Проверка запросами в терминале через CURL, данные сохраняются в БД:
 -----------------------------------------------------------------------
-1.) CREATE
+1.) CREATE:
 
 curl -X POST "http://localhost:8080/users" -H 'Content-Type: application/json' -d '{ "name": "1 user create", "age": "34", "country": "USA" }'
 
-2.) VIEW list(GET)
+2.) VIEW list(GET) / VIEW one(GET):
 
 curl -X GET "http://localhost:8080/users" -H 'Content-Type: application/json'
 
-3.) VIEW one(GET)
+curl -X GET "http://localhost:8080/users/1" -H 'Content-Type: application/json'
 
-curl -X GET "http://localhost:8080/users/60" -H 'Content-Type: application/json'
+3.) UPDATE:
 
-4.) UPDATE
+curl -X PUT "http://localhost:8080/users/1" -H 'Content-Type: application/json' -d '{ "name": "1 user update", "age": "22", "country": "Russia" }'
 
-curl -X PUT "http://localhost:8080/users/60" -H 'Content-Type: application/json' -d '{ "name": "1 user update", "age": "22", "country": "Russia" }'
+4.) DELETE:
 
-5.) DELETE
-
-curl -X DELETE "http://localhost:8080/users/60" -H 'Content-Type: application/json'
+curl -X DELETE "http://localhost:8080/users/1" -H 'Content-Type: application/json'
 
